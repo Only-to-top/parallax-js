@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Parallax JS</title>
+  <style>
+    body{margin: 0;}
+    *{box-sizing: border-box;}
+    img{max-width: 100%;}
+    .scene{
+      z-index: -1;
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      min-height: 100vh;
+    }
+    .layer{
+      position: absolute;
+      left: -10%;
+      top: 0;
+      width: 110%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+    .layer-bg{background-image: linear-gradient(to right bottom, #2d7196, #1d2a4c);}
+    .layer-1{background-image: url('parallax1.png');}
+    .layer-2{background-image: url('parallax2.png');}
+  </style>
+</head>
+<body>
+
+  <div class="scene">
+    <div class="layer layer-bg" data-speed="0"></div>
+    <div class="layer layer-1" data-speed="20"></div>
+    <div class="layer layer-2" data-speed="80"></div>
+  </div>
+  
+
+  <script>
+    function parallax(event) {
+      this.querySelectorAll('.layer').forEach(layer => {
+        var speed = layer.getAttribute('data-speed'); // возьмём атрибут 'data-speed'
+        layer.style.transform = 'translateX(' + event.clientX*speed/1000 + 'px) translateY(' + event.clientY*speed/800 + 'px)';
+      });
+    }
+    document.addEventListener('mousemove', parallax);
+  </script>
+</body>
+</html>
