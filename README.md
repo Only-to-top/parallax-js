@@ -1,3 +1,3 @@
 # parallax-js
 
-https://soldatovnikolay.github.io/parallax-js/
+https://Only-to-top.github.io/parallax-js/
